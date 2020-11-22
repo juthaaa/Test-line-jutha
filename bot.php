@@ -149,7 +149,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             if( $event['message']['type'] == 'text' ){
               $text = $event['message']['text'];
                 if($text == "test"){
-                    $reply_message=$jsonFlex;
+                    $reply_message='[Test]'.$text;
                 }
               else
                 $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
@@ -165,7 +165,7 @@ if ( sizeof($request_array['events']) > 0 ) {
        if( strlen($reply_message) > 0 ) {
             $data = [
                 'replyToken' => $reply_token,
-                'messages' => [['type' => 'text', 'text' => $reply_message]]
+                'messages' => [['type' => 'text', 'text' => $jsonFlex]]
             ];
             $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
