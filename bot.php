@@ -19,19 +19,17 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $reply_message = '';
         $reply_token = $event['replyToken'];
-        $text = $event['message']['text'];
+       
 
         if ( $event['type'] == 'message' ) {
    
             if( $event['message']['type'] == 'text' ){
                 if($text == "test"){
+                    $text = $event['message']['text'];
                     $reply_message='[Test]line_jutha';
-                }
-        
-            }
-        else
-            $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
-  
+             }
+            else
+                $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
         }
         else
             $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
