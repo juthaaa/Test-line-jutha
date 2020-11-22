@@ -21,90 +21,34 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
 
-        $test2= { "type": "bubble",
-                 "body": {
-                 "type": "box",
-                 "layout": "vertical",
-                "contents": [
-                 {
-                  "type": "text",
-                  "text": $event['message']['text'],
-                    "weight": "bold",
-                    "size": "xl"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "margin": "lg",
-                    "spacing": "sm",
-                    "contents": [
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "Dead",
-                            "color": "#aaaaaa",
-                            "size": "sm",
-                            "flex": 1
-                          },
-                          {
-                            "type": "text",
-                            "text": "100",
-                            "wrap": true,
-                            "color": "#666666",
-                            "size": "sm",
-                            "flex": 5
-                          }
-                        ]
-                      },
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "Time",
-                            "color": "#aaaaaa",
-                            "size": "sm",
-                            "flex": 1
-                          },
-                          {
-                            "type": "text",
-                            "text": "10:00 - 23:00",
-                            "wrap": true,
-                            "color": "#666666",
-                            "size": "sm",
-                            "flex": 5
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            };
+        if ( $event['type'] == 'message' ) {
+   
+            if( $event['message']['type'] == 'text' ){
+                if(($text == "test"){
+                    $reply_message='[Test]line_jutha';
+                }
+        
+            }
+        else
+            $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
+  
+        }
+        else
+            $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
         
         
         
-        
-        
-        
-        
-        
-        $data = [
-            'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => $text2]]
-        ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+       if( strlen($reply_message) > 0 ) 
+            $data = [
+                'replyToken' => $reply_token,
+                'messages' => [['type' => 'text', 'text' => $reply_message]]
+            ];
+            $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
-        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
-        echo "Result: ".$send_result."\r\n";
-        
+            echo "Result: ".$send_result."\r\n";
+        }   
     }
 }
 
