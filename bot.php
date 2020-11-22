@@ -1,3 +1,5 @@
+
+  
 <?php
 
 
@@ -27,7 +29,8 @@ if ( sizeof($request_array['events']) > 0 ) {
                 if($text == "test"){
                     $text = $event['message']['text'];
                     $reply_message='[Test]line_jutha';
-             }
+                }
+            }
             else
                 $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
         }
@@ -42,18 +45,13 @@ if ( sizeof($request_array['events']) > 0 ) {
                 'messages' => [['type' => 'text', 'text' => $reply_message]]
             ];
             $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-
             echo "Result: ".$send_result."\r\n";
         }   
     }
 }
 
 echo "OK3";
-
-
-
 
 function send_reply_message($url, $post_header, $post_body)
 {
@@ -65,8 +63,6 @@ function send_reply_message($url, $post_header, $post_body)
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     $result = curl_exec($ch);
     curl_close($ch);
-
     return $result;
 }
-
 ?>
