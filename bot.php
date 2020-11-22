@@ -26,8 +26,8 @@ if ( sizeof($request_array['events']) > 0 ) {
         if ( $event['type'] == 'message' ) {
    
             if( $event['message']['type'] == 'text' ){
+              $text = $event['message']['text'];
                 if($text == "test"){
-                    $text = $event['message']['text'];
                     $reply_message='[Test]line_jutha';
                 }
             }
