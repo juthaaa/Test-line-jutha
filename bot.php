@@ -98,7 +98,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => $text]]
+            'messages' => [['type' => 'text', 'text' => $text2]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
