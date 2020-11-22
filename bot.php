@@ -3,7 +3,7 @@
 
 $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = '3HybiCTMChuEZhNmEk3HntMDNMggKiL5LFVMpXmhuN9xTdleCAmYz1hLQGO4F8co/IQJG0/jX7OFyEu3rJdkYaDofcwGDPrq+8GppxkB/ZdugXt+h70LpxINX+f0WF74e8iTMa3qO6fVkV8mIcl8bQdB04t89/1O/w1cDnyilFU='; 
-$channelSecret = '2fb9bd4c3fa3a2e441559bb5a0b01fd1';
+
 
 
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
